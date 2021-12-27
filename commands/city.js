@@ -9,7 +9,7 @@ module.exports = {
   async execute(message, args, bot) {
     const userName = message.author.username;
 
-    const log_channel = bot.channels.cache.get("916359387419934740");
+    const log_channel = bot.channels.cache.get(config.discord.log_channel);
     const result = await callApi(
       `${config.poleEmploi.callUrl}search?range=0-4&qualification=0&departement=${args}&motsCles=developpeur`
     );
@@ -142,7 +142,6 @@ module.exports = {
         //use discord webhook to send message
 
         //send message
-        let test = "918091841394597888";
         message.channel
           .send({
             content: "Offre annonce Pôle Emploi",

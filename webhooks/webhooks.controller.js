@@ -143,9 +143,8 @@ async function webhookHandle(api) {
     // picture.img[(Math.floor(Math.random() * 80))].src.medium
     //use discord webhook to send message
     const webhookClient = new WebhookClient({
-      id: "912834760735330315",
-      token:
-        "nJjzcGQ6NkTS9Znt2-ebdEdzK-rpnin2XP69NnMnKNJBkWI_vx4pNy7jUHKVpWoSW6Z7",
+      id: config.offreHook.channelId,
+      token: config.offreHook.tokenChannel,
     });
 
     //send message
