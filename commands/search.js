@@ -1,6 +1,6 @@
 const Timer = 900000;
 const { MessageEmbed } = require("discord.js");
-
+const config = require("../config");
 function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
@@ -14,7 +14,7 @@ module.exports = {
   execute(message, args, bot) {
     const userName = message.author.username;
 
-    const log_channel = bot.channels.cache.get("916359387419934740");
+    const log_channel = bot.channels.cache.get(config.discord.log_channel);
     const embed = new MessageEmbed()
       .setTitle(
         `:sunny: CMD:[!search]channel search of ${message.author.username} created`
@@ -25,7 +25,7 @@ module.exports = {
     message.guild.channels
       .create(`search of ${message.author.username}`, {
         type: "text",
-        parent: "644488442788577281",
+        parent: config.discord.parent_channel,
         permissionOverwrites: [
           {
             id: message.guild.id,

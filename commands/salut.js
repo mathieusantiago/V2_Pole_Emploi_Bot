@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-
+const config = require("../config");
 module.exports = {
   name: "salut",
   description: "Présentation du bot Pôle Emploi",
@@ -7,7 +7,7 @@ module.exports = {
   execute(message, args, bot) {
     const userName = message.author.username;
 
-    const log_channel = bot.channels.cache.get("916359387419934740");
+    const log_channel = bot.channels.cache.get(config.discord.log_channel);
     const embed = new MessageEmbed()
 
       .setTitle(`:wave: Salut je suis le bot pôle-emploi`)
