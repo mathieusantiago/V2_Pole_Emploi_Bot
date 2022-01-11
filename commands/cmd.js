@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const config = require("../config");
 module.exports = {
   name: "cmd",
-  description: "Liste toute les commandes du bot Pôle Emploi",
+  description: "Liste toutes les commandes du bot Pôle Emploi",
 
   execute(message, args, bot) {
     const userName = message.author.username;
@@ -17,7 +17,7 @@ module.exports = {
         "https://www.pole-emploi.fr/accueil/" 
       )
       .setDescription(
-        "!salut : Présentation du bot \n !cmd : Liste des commandes \n !search : Création d'un channel de recherche  \n !city département  : Effectuer un recherche par département"
+        "!salut : Présentation du bot \n !cmd : Liste des commandes \n !search : Création d'un channel de recherche  \n !city département  : Effectuer une recherche par département"
       )
       .setColor("#00b0f4")
       .setThumbnail(
