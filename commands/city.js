@@ -1,12 +1,12 @@
 const { MessageEmbed, WebhookClient } = require("discord.js");
 const defaultText =
-  "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
+  "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
 const config = require("../config");
 const { callApi } = require("../helpers/callApi");
 
 module.exports = {
   name: "city",
-  description: "Liste toute les commandes du bot Pôle Emploi",
+  description: "Liste toutes les commandes du bot Pôle Emploi",
 
   async execute(message, args, bot) {
     const userName = message.author.username;
@@ -19,7 +19,7 @@ module.exports = {
       api = await result.json();
       api.resultats.map(async (data) => {
         //create cosntant for recieving data call of API
-        let money = "non renseigner";
+        let money = "non renseigné";
         //if salary is undefined
         if (data.salaire.libelle === undefined) {
           money =
@@ -57,7 +57,7 @@ module.exports = {
             data.entreprise.nom || defaultText
           )
           .addField(
-            ":map: Lieux de travail ",
+            ":map: Lieu de travail ",
             data.lieuTravail.libelle || defaultText
           )
           .addField(
@@ -65,13 +65,13 @@ module.exports = {
             data.typeContratLibelle || defaultText
           )
           .addField(
-            ":alarm_clock: duree de Travail ",
+            ":alarm_clock: durée de Travail ",
             data.dureeTravailLibelleConverti ||
               data.dureeTravailLibelle + " " + timeWork2
           )
           .addField("\u200b", ":money_with_wings: Salaire ", money, "\u200b")
           .addField(
-            ":bar_chart: Experience demandée ",
+            ":bar_chart: Expérience demandée ",
             data.experienceLibelle || defaultText
           )
           .addField(
@@ -129,7 +129,7 @@ module.exports = {
       });
     } else {
       message.channel.send(
-        "il n'y a pas d'offre pour ce département ou le département n'existe pas !"
+        "Il n'y a pas d'offre pour ce département ou le département n'existe pas !"
       );
       const embed = new MessageEmbed()
         .setTitle(
