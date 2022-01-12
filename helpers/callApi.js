@@ -18,7 +18,6 @@ async function callApi(url) {
   const data = await response.json();
   //and create constante for the access token
   const token = data && data.access_token ? data.access_token : null;
-
   //call the api use fetch and the access token and the header prepared above
   const result = await fetch(`${url}`, {
     method: "GET",
@@ -27,11 +26,6 @@ async function callApi(url) {
       Authorization: `Bearer ${token}`,
     },
   });
-  console.log(result.status);
-  if (result.status === 400)result.stat = 400
-  if (result.status === 206)result.stat = 206
-  if (result.status === 204)result.stat = 204
-
   //return the result of the api call
   return result;
 }

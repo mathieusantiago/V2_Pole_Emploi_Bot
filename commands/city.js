@@ -15,7 +15,7 @@ module.exports = {
       `${config.poleEmploi.callUrl}search?range=0-4&qualification=0&departement=${args}&motsCles=developpeur`
     );
 
-    if (result.stat === 206) {
+    if (result.status === 206) {
       api = await result.json();
       api.resultats.map(async (data) => {
         //create cosntant for recieving data call of API
@@ -133,12 +133,12 @@ module.exports = {
       );
       const embed = new MessageEmbed()
         .setTitle(
-          `:sunny: CMD:[!city] status ${result.stat} an error while send message `
+          `:sunny: CMD:[!city] statusus ${result.status} an error while send message `
         )
         .setColor("#00b0f4");
       log_channel.send({ embeds: [embed] });
       console.log(
-        `CMD:[!city]status ${result.stat} an error while send message`
+        `CMD:[!city]statusus ${result.status} an error while send message`
       );
     }
   },
