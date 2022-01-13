@@ -10,14 +10,14 @@ module.exports = {
     const log_channel = bot.channels.cache.get(config.discord.log_channel);
     const embed = new MessageEmbed()
 
-      .setTitle(`:wave: Salut, je suis le bot pôle-emploi`)
+      .setTitle(`:wave: Salut ${userName} ! Je suis le bot pôle-emploi`)
       .setAuthor(
         "Pôle Emploi",
         "https://upload.wikimedia.org/wikipedia/fr/thumb/c/c0/Logo_P%C3%B4le_Emploi_2008.svg/2560px-Logo_P%C3%B4le_Emploi_2008.svg.png",
         "https://www.pole-emploi.fr/accueil/"
       )
       .setDescription(
-        "Avec moi, tu vas pouvoir rechercher des offres d'emploi \n grâce à mes commandes que tu pourras voir en utilisant la commande !cmd"
+        "Avec moi, tu vas pouvoir rechercher des offres d'emploi \n grâce aux commandes que tu peux découvrir en utilisant la commande !cmd"
       )
       .setColor("#00b0f4")
       .setThumbnail(
