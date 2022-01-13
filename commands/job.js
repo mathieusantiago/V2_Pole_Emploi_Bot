@@ -5,7 +5,7 @@ const { callApi } = require("../helpers/callApi");
 module.exports = {
   name: "job",
   description:
-    "!job + mots clé + département: Effectuer un recherche par département",
+    "!job + mot-clé + département: Effectuer un recherche par département",
 
   async execute(message, args, bot) {
     const userName = message.author.username;
@@ -19,92 +19,92 @@ module.exports = {
     if (result.status === 206) {
       api = await result.json();
       var doubles = api.resultats.map(async (data) => {
-        //create cosntant for recieving data call of API
-        let money = "non renseigner";
+        //create constant for recieving data call of API
+        let money = "non renseigné";
         let offre = data;
 
-        //recieve data of title (developpeur junior)
+        //receive data of title (developpeur junior)
         const setTitle =
           offre && offre.intitule
             ? offre.intitule.substring(0, 256)
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
-        //recieve data of url offre (https://www.pole-emploi.fr/offres/2718097)
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
+        //receive data of url offre (https://www.pole-emploi.fr/offres/2718097)
         const setURL =
           offre && offre.origineOffre && offre.origineOffre.urlOrigine
             ? offre.origineOffre.urlOrigine
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
-        //recieve data of the offre (2021-11-10T16:52:53.000Z)
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
+        //receive data of the offre (2021-11-10T16:52:53.000Z)
         const dataCreate =
           offre && offre.dateCreation
             ? offre.dateCreation
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
-        //recieve data of name of create offre (Micheline)
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
+        //receive data of name of create offre (Micheline)
         const contactName =
           offre && offre.contact && offre.contact.nom
             ? offre.contact.nom
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
-        //recieve data of companie (Micheline ink)
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
+        //receive data of companie (Micheline ink)
         const companieName =
           offre && offre.entreprise && offre.entreprise.nom
             ? offre.entreprise.nom
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
-        //recieve data of city (dubai)
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
+        //receive data of city (dubai)
         const city =
           offre && offre.lieuTravail && offre.lieuTravail.libelle
             ? offre.lieuTravail.libelle
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
-        //recieve data of contrat (CDI CDD ...)
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
+        //receive data of contrat (CDI CDD ...)
         const typeContract =
           offre && offre.typeContratLibelle
             ? offre.typeContratLibelle
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
-        //recieve data of contrat (35h/semaine)
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
+        //receive data of contrat (35h/semaine)
         const timeWork1 =
           offre && offre.dureeTravailLibelleConverti
             ? offre.dureeTravailLibelleConverti
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
         const timeWork2 =
           offre && offre.dureeTravailLibelle
             ? offre.dureeTravailLibelle
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
         //if salary is undefined
         if (offre.salaire.libelle === undefined) {
           money =
             offre && offre.salaire && offre.salaire.commentaire
               ? offre.salaire.commentaire
-              : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
+              : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
         } else {
           money =
             offre && offre.salaire && offre.salaire.libelle
               ? offre.salaire.libelle
-              : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
+              : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
         }
-        //recieve data of experience
+        //receive data of experience
         const experience =
           offre && offre.experienceLibelle
             ? offre.experienceLibelle
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
-        //recieve data of niveau d'etude
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
+        //receive data of niveau d'etude
         const learn1 =
           offre &&
           offre.formations &&
           offre.formations[0] &&
           offre.formations[0].domaineLibelle
             ? offre.formations[0].domaineLibelle
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
         const learn2 =
           offre &&
           offre.formations &&
           offre.formations[0] &&
           offre.formations[0].niveauLibelle
             ? offre.formations[0].niveauLibelle
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
-        //recieve data of description
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
+        //receive data of description
         const description =
           offre && offre.description
             ? offre.description.substring(0, 1000)
-            : "Non renseigné plus de détaille en cliquant sur le titre de l'offre";
-        //ues message builder to create message
+            : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
+        //use message builder to create message
 
         const embed = new MessageEmbed()
 
@@ -121,13 +121,13 @@ module.exports = {
             "**" + contactName + "**"
           )
           .addField(":factory: Nom de l'entreprise ", companieName)
-          .addField(":map: Lieux de travail ", city)
+          .addField(":map: Lieu de travail ", city)
           .addField(":bookmark_tabs: Type de contrat ", typeContract)
           .addField(
-            ":alarm_clock: duree de Travail ",
+            ":alarm_clock: durée de Travail ",
             timeWork1 + " " + timeWork2
           )
-          .addField("\u200b", ":money_with_wings: Salaire ", money, "\u200b")
+          .addField(":money_with_wings: Salaire ", money)
           .addField(":bar_chart: Experience demandée ", experience)
           .addField(
             ":man_student: Formation demandée ",

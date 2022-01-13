@@ -12,7 +12,7 @@ async function test(offreID) {
 async function webhookHandle(api) {
   // use map to get all the API data
   var doubles = api.resultats.map(async (data) => {
-    //create cosntant for recieving data call of API
+    //create constant for recieving data call of API
     let money = "non renseigné";
     let offre = data;
     let offreID = await test(offre.id);
@@ -27,42 +27,42 @@ async function webhookHandle(api) {
     if (flag !== 1) {
       const registerTrue = offreRegister.registerOffre({ offreID: offre.id });
     }
-    //recieve data of title (developpeur junior)
+    //receive data of title (developpeur junior)
     const setTitle =
       offre && offre.intitule
         ? offre.intitule.substring(0, 256)
         : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
-    //recieve data of url offre (https://www.pole-emploi.fr/offres/2718097)
+    //receive data of url offre (https://www.pole-emploi.fr/offres/2718097)
     const setURL =
       offre && offre.origineOffre && offre.origineOffre.urlOrigine
         ? offre.origineOffre.urlOrigine
         : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
-    //recieve data of the offre (2021-11-10T16:52:53.000Z)
+    //receive data of the offre (2021-11-10T16:52:53.000Z)
     const dataCreate =
       offre && offre.dateCreation
         ? offre.dateCreation
         : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
-    //recieve data of name of create offre (Micheline)
+    //receive data of name of create offre (Micheline)
     const contactName =
       offre && offre.contact && offre.contact.nom
         ? offre.contact.nom
         : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
-    //recieve data of companie (Micheline ink)
+    //receive data of companie (Micheline ink)
     const companieName =
       offre && offre.entreprise && offre.entreprise.nom
         ? offre.entreprise.nom
         : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
-    //recieve data of city (dubai)
+    //receive data of city (dubai)
     const city =
       offre && offre.lieuTravail && offre.lieuTravail.libelle
         ? offre.lieuTravail.libelle
         : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
-    //recieve data of contrat (CDI CDD ...)
+    //receive data of contrat (CDI CDD ...)
     const typeContract =
       offre && offre.typeContratLibelle
         ? offre.typeContratLibelle
         : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
-    //recieve data of contrat (35h/semaine)
+    //receive data of contrat (35h/semaine)
     const timeWork1 =
       offre && offre.dureeTravailLibelleConverti
         ? offre.dureeTravailLibelleConverti
@@ -83,12 +83,12 @@ async function webhookHandle(api) {
           ? offre.salaire.libelle
           : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
     }
-    //recieve data of experience
+    //receive data of experience
     const experience =
       offre && offre.experienceLibelle
         ? offre.experienceLibelle
         : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
-    //recieve data of niveau d'etude
+    //receive data of niveau d'etude
     const learn1 =
       offre &&
       offre.formations &&
@@ -103,12 +103,12 @@ async function webhookHandle(api) {
       offre.formations[0].niveauLibelle
         ? offre.formations[0].niveauLibelle
         : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
-    //recieve data of description
+    //receive data of description
     const description =
       offre && offre.description
         ? offre.description.substring(0, 1000)
         : "Non renseigné. Plus de détails en cliquant sur le titre de l'offre";
-    //ues message builder to create message
+    //use message builder to create message
 
     const embed = new MessageEmbed()
 
@@ -128,7 +128,7 @@ async function webhookHandle(api) {
       .addField(":map: Lieu de travail ", city)
       .addField(":bookmark_tabs: Type de contrat ", typeContract)
       .addField(":alarm_clock: durée de Travail ", timeWork1 + " " + timeWork2)
-      .addField("\u200b", ":money_with_wings: Salaire ", money, "\u200b")
+      .addField(":money_with_wings: Salaire ", money)
       .addField(":bar_chart: Expérience demandée ", experience)
       .addField(
         ":man_student: Formation demandée ",
