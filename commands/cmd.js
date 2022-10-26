@@ -17,7 +17,7 @@ module.exports = {
         "https://www.pole-emploi.fr/accueil/" 
       )
       .setDescription(
-        "!salut : Présentation du bot \n !cmd : Liste des commandes \n !search : Création d'un channel de recherche  \n !city département  : Effectuer une recherche par département \n !job mot clé département  : Effectuer une recherche par met clé et département"
+        "!salut : Présentation du bot \n !cmd : Liste des commandes \n !search : Création d'un channel de recherche  \n !city <département> : Effectuer une recherche par département \n !job <mot-clé> <département>  : Effectuer une recherche par mot-clé et département"
       )
       .setColor("#00b0f4")
       .setThumbnail(

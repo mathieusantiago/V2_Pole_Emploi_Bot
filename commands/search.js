@@ -36,7 +36,7 @@ module.exports = {
       })
       .then(async (channel_search) => {
         channel_search.send(
-          "`Bonjour, bienvenue sur ce channel de recherche,\n ce channel restera actif 15 minutes !!!\n Il sera supprimé automatiquement à la suite de ces 15 minutes!!! `"
+          "`Bonjour, bienvenue sur ce channel de recherche.\n Ce channel restera actif 15 minutes !!!\n Il sera supprimé automatiquement à la suite de ces 15 minutes!!! `"
         );
         await sleep(Timer);
         channel_search.delete();
