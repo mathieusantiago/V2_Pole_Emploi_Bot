@@ -148,16 +148,16 @@ module.exports = {
           //   embeds: [embed],
           // })
           .then((message) => {
-            // const embed = new MessageEmbed()
-            //   .setTitle(
-            //     `:sunny: CMD:[!city ${args}] message send by ${userName} channel: ${message.channel} !!!`
-            //   )
-            //   .setColor("#00b0f4");
-            // log_channel.send({ embeds: [embed] });
+            const embed = new MessageEmbed()
+              .setTitle(
+                `:sunny: CMD:[!city ${args}] message send by ${userName} channel: ${message.channel} !!!`
+              )
+              .setColor("#00b0f4");
+            log_channel.send({ embeds: [embed] });
 
-            // console.log(
-            //   `CMD:[!city] message send by ${userName} channel: ${message.channel} !!!`
-            // );
+            console.log(
+              `CMD:[!city] message send by ${userName} channel: ${message.channel} !!!`
+            );
           })
           .catch((err) => {
             const embed = new MessageEmbed()
